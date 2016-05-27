@@ -2,6 +2,7 @@
 const passport = require('passport');
 const config = require('../config');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const TwitterStrategy = require("passport-twitter").Strategy;
 const h = require('../helpers')
 
 module.exports = () => {
@@ -28,5 +29,7 @@ module.exports = () => {
 				}
 			});
 	}
+	
 	passport.use(new FacebookStrategy(config.fb, authProcessor));
+	passport.use(new TwitterStrategy(config.twitter, authProcessor));
 }
